@@ -1,77 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="{{url_for('static', filename='/assets/img/rem.ico')}}">
+  <title>
+   RemRover
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="{{url_for('static', filename='/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{{url_for('static', filename='/assets/css/blk-design-system.css')}}" rel="stylesheet" />
 
-    <title>RemRover</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-11" style="margin-top: 30px;">
-          <h1>RemRover Control Panel</h1>
-          <hr>
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <div class="wrapper">
+    <div>
+      <div class="squares square1"></div>
+      <div class="squares square2"></div>
+      <div class="squares square3"></div>
+      <div class="squares square5"></div>
+      <div class="squares square6"></div>
+      <div class="squares square7"></div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <div class="row" style="margin-top: 30px;">
+          <div class="col-lg-12">
+            <h1 class="title">RemRover • Control Panel</h1>
+            <h3>A Remote Controlled Rover</h3>
+          </div>
         </div>
-      </div>
-      
-      <div class="row justify-content-center">
+
+        <div class="row" style="margin-top: 20px;">
           <div class="col-lg-8">
-            <img height=750 width=1200 src="{{ url_for('video_feed') }}">
+            <img style="border-radius: 5%;" src="{{ url_for('static', filename = '/assets/img/rem_1200x750.png') }}">
           </div>
-      
-          <div class="col-lg-3">
-            <div class="container" style="margin-bottom:60px;">
-              <div class="row" style="margin-bottom : 30px;">
-                <div class="col">
-                  <button id="p_l" class="btn btn-primary w-100">Pan Left</button>
-                </div>
-                <div class="col">
-                  <button id="p_r" class="btn btn-primary w-100">Pan Right</button>
-                </div>
+
+          <div class="col-lg-4">
+
+            <div class="row">
+              <p class="blockquote blockquote-primary">
+                The Pan and Tilt controls can be used to change the direction of the camera. The camera is fitted on to a Pan and Tilt Bracket operated by 2 Servos. 
+                The Pi server will notify you when the servo pan/tilt limit has been reached. The Movement controls can be used to move the Rover in the desired direction.
+              </p>
+            </div>
+
+            <div class="row">
+              <h4 class="title">&emsp;Pan and Tilt Controls</h4>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+              <div class="col-md-3">
+                <button id="p_l" class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-left" style="font-size: x-large; font-weight: 1000;"></i></button>
               </div>
-              <div class="row">
-                <div class="col">
-                  <button id="t_u" class="btn btn-primary w-100">Tilt Up</button>
-                </div>
-                <div class="col">
-                  <button id="t_d" class="btn btn-primary w-100">Tilt Down</button>
-                </div>
+              <div class="col-md-3">
+                <button id="t_u" class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-up" style="font-size: x-large; font-weight: 1000;"></i></button>
               </div>
-          </div>
-          
-          <div class="container">
-              <div class="row" style="margin-bottom : 30px;">
-                <div class="col">
-                  <button class="btn btn-success w-100">Move Forward</button>
-                </div>
-                <div class="col">
-                  <button class="btn btn-success w-100">Move Backward</button>
-                </div>
+              <div class="col-md-3">
+                <button id="t_d" class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-down" style="font-size: x-large; font-weight: 1000;"></i></button>
               </div>
-              <div class="row">
-                <div class="col">
-                  <button class="btn btn-success w-100">Turn Left</button>
-                </div>
-                <div class="col">
-                  <button class="btn btn-success w-100">Turn Right</button>
-                </div>
+              <div class="col-md-3">
+                <button id="p_r" class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-right" style="font-size: x-large; font-weight: 1000;"></i></button>
               </div>
+            </div>
+
+            <div class="row">
+              <h4 class="title">&emsp;Movement Controls</h4>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+              <div class="col-md-3">
+                <button class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-left" style="font-size: x-large; font-weight: 1000;"></i></button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-up" style="font-size: x-large; font-weight: 1000;"></i></button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-down" style="font-size: x-large; font-weight: 1000;"></i></button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-warning" style="width: 100px; height: 100px;"><i class="tim-icons icon-minimal-right" style="font-size: x-large; font-weight: 1000;"></i></button>
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn btn-default" style="width:100%; font-weight: 500;">Messages from server will be displayed here.</button>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='index.js')}}"></script>
-  </body>
-</html>
+  <!--   Core JS Files   -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+    integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+    crossorigin="anonymous"></script>
+  <script src="{{url_for('static', filename='index.js')}}"></script>
 
+  <script src="{{url_for('static', filename='/assets/js/core/jquery.min.js')}}" type="text/javascript"></script>
+  <script src="{{url_for('static', filename='/assets/js/core/popper.min.js')}}" type="text/javascript"></script>
+  <script src="{{url_for('static', filename='/assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
+  <script src="{{url_for('static', filename='/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="{{url_for('static', filename='/assets/js/plugins/bootstrap-switch.js')}}"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="{{url_for('static', filename='/assets/js/plugins/nouislider.min.js')}}" type="text/javascript"></script>
+  <!-- Chart JS -->
+  <script src="{{url_for('static', filename='/assets/js/plugins/chartjs.min.js')}}"></script>
+  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+  <script src="{{url_for('static', filename='/assets/js/plugins/moment.min.js')}}"></script>
+  <script src="{{url_for('static', filename='/assets/js/plugins/bootstrap-datetimepicker.js')}}"
+    type="text/javascript"></script>
+  <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+  <script src="{{url_for('static', filename='/assets/js/blk-design-system.min.js')}}" type="text/javascript"></script>
+  <script>
+    $(document).ready(function () {
+      blackKit.initDatePicker();
+      blackKit.initSliders();
+    });
+
+    function scrollToDownload() {
+
+      if ($('.section-download').length != 0) {
+        $("html, body").animate({
+          scrollTop: $('.section-download').offset().top
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+
+</html>

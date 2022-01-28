@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>RemRover</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-11" style="margin-top: 30px;">
+          <h1>RemRover Control Panel</h1>
+          <hr>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <img height=750 width=1200 src="{{ url_for('static', filename = 'rem_1200x750.png') }}">
+          </div>
+      
+          <div class="col-lg-3">
+            <div class="container" style="margin-bottom:60px;">
+              <div class="row" style="margin-bottom : 30px;">
+                <div class="col">
+                  <button id="p_l" class="btn btn-primary w-100">Pan Left</button>
+                </div>
+                <div class="col">
+                  <button id="p_r" class="btn btn-primary w-100">Pan Right</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button id="t_u" class="btn btn-primary w-100">Tilt Up</button>
+                </div>
+                <div class="col">
+                  <button id="t_d" class="btn btn-primary w-100">Tilt Down</button>
+                </div>
+              </div>
+          </div>
+          
+          <div class="container">
+              <div class="row" style="margin-bottom : 30px;">
+                <div class="col">
+                  <button class="btn btn-success w-100">Move Forward</button>
+                </div>
+                <div class="col">
+                  <button class="btn btn-success w-100">Move Backward</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-success w-100">Turn Left</button>
+                </div>
+                <div class="col">
+                  <button class="btn btn-success w-100">Turn Right</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+  </body>
+</html>
+
