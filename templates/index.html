@@ -21,6 +21,13 @@
     body {
       overflow-x: hidden;
     }
+
+    .image_wrapper{
+      height:100%; 
+      border-radius:5%; 
+      background: url('/static/assets/img/rem_1200x750.png');
+      background-position: 50% 50%;
+    }
   </style>
 </head>
 
@@ -46,7 +53,9 @@
 
         <div class="row" style="margin-top: 20px;">
           <div class="col-lg-8">
-             <img style="border-radius: 5%;" src = "{{ url_for('video_feed') }}" >
+            <div class="image_wrapper">
+              <img style="border-radius: 5%;" src = "{{ url_for('video_feed') }}" >
+            </div>
           </div>
 
           <div class="col-lg-4">
