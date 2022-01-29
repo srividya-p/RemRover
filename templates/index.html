@@ -46,7 +46,7 @@
 
         <div class="row" style="margin-top: 20px;">
           <div class="col-lg-8">
-            <img style="border-radius: 5%;" src="{{ url_for('static', filename = '/assets/img/rem_1200x750.png') }}">
+             <img style="border-radius: 5%;" src = "{{ url_for('video_feed') }}" >
           </div>
 
           <div class="col-lg-4">
@@ -97,7 +97,7 @@
             </div>
 
             <div class="row">
-              <button class="btn btn-default" style="width:100%; font-weight: 500;">Messages from server will be displayed here.</button>
+              <button id="server_message" class="btn btn-default" style="width:100%; font-weight: 500;">Messages from server will be displayed here.</button>
             </div>
           </div>
         </div>
