@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 from importlib import import_module
 import os
 import argparse
@@ -16,7 +17,10 @@ else:
     
     
 def sigint_handler(signal, frame):
+    GPIO.cleanup()
+    print('GPIO Clean up Done.')
     os.system("sudo killall servod")
+    print('Servod process terminated.')
     sys.exit(0)
 signal.signal(signal.SIGINT, sigint_handler)
 
@@ -43,6 +47,28 @@ time.sleep(0.005)
 os.system("echo 5=%s > /dev/servoblaster"%SERVO2)
 time.sleep(0.005)
 
+#Initialising Motors
+GPIO.setmode(GPIO.BOARD)
+ 
+Motor1A = 38
+Motor1B = 36
+Motor1E = 40
+ 
+Motor2A = 35
+Motor2B = 37
+Motor2E = 33
+ 
+GPIO.setup(Motor1A,GPIO.OUT)
+GPIO.setup(Motor1B,GPIO.OUT)
+GPIO.setup(Motor1E,GPIO.OUT)
+ 
+GPIO.setup(Motor2A,GPIO.OUT)
+GPIO.setup(Motor2B,GPIO.OUT)
+GPIO.setup(Motor2E,GPIO.OUT)
+
+p1 = GPIO.PWM(Motor1E, 1000)
+p2 = GPIO.PWM(Motor2E, 1000)
+
 @app.route('/')
 def index():
     """Video streaming home page."""
@@ -67,6 +93,8 @@ def video_feed():
 def handle_message(data):
     print(data['data'])
     
+#SERVO CONTROLS
+
 @socketio.on('pan_left')
 def pan_left():
     global SERVO1
@@ -110,10 +138,66 @@ def tilt_down():
         SERVO2 += 2
         os.system("echo 5=+2 > /dev/servoblaster")
         time.sleep(0.005)
+
+#MOVEMENT CONTROLS
+
+@socketio.on('stop_movement')
+def stop_movement():
+    GPIO.output(Motor1A,GPIO.LOW)
+    GPIO.output(Motor1B,GPIO.LOW)
+    GPIO.output(Motor1E,GPIO.LOW)
     
+    GPIO.output(Motor2A,GPIO.LOW)
+    GPIO.output(Motor2B,GPIO.LOW)
+    GPIO.output(Motor2E,GPIO.LOW)
+
+@socketio.on('move_forward')
+def move_forward():
+    p1.start(25)
+    GPIO.output(Motor1A,GPIO.LOW)
+    GPIO.output(Motor1B,GPIO.HIGH)
+    GPIO.output(Motor1E,GPIO.HIGH)
+    
+    p2.start(25)
+    GPIO.output(Motor2A,GPIO.LOW)
+    GPIO.output(Motor2B,GPIO.HIGH)
+    GPIO.output(Motor2E,GPIO.HIGH)
+    
+@socketio.on('move_backward')
+def move_backward():
+    p1.start(25)
+    GPIO.output(Motor1A,GPIO.HIGH)
+    GPIO.output(Motor1B,GPIO.LOW)
+    GPIO.output(Motor1E,GPIO.HIGH)
+    
+    p2.start(25)
+    GPIO.output(Motor2A,GPIO.HIGH)
+    GPIO.output(Motor2B,GPIO.LOW)
+    GPIO.output(Motor2E,GPIO.HIGH) 
+    
+@socketio.on('move_left')
+def move_left():
+    GPIO.output(Motor2A,GPIO.LOW)
+    GPIO.output(Motor2B,GPIO.LOW)
+    GPIO.output(Motor2E,GPIO.LOW)
+    
+    p1.start(25)
+    GPIO.output(Motor1A,GPIO.LOW)
+    GPIO.output(Motor1B,GPIO.HIGH)
+    GPIO.output(Motor1E,GPIO.HIGH)
+    
+@socketio.on('move_right')
+def move_right():
+    GPIO.output(Motor1A,GPIO.LOW)
+    GPIO.output(Motor1B,GPIO.LOW)
+    GPIO.output(Motor1E,GPIO.LOW)
+    
+    p2.start(25)
+    GPIO.output(Motor2A,GPIO.LOW)
+    GPIO.output(Motor2B,GPIO.HIGH)
+    GPIO.output(Motor2E,GPIO.HIGH)
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', threaded=True)
     debug_value = False if options.run_remote else True
     socketio.run(app, host='0.0.0.0', debug=debug_value)
-

@@ -5,7 +5,7 @@ socket.on('connect', function() {
 	socket.emit('connected', {data: 'I\'m connected!'});
 });
 
-
+//SERVO CONTROLS
 document.getElementById('p_l').addEventListener("click", function(){ 
 	socket.emit('pan_left'); 
 });
@@ -20,6 +20,39 @@ document.getElementById('t_u').addEventListener("click", function(){
 
 document.getElementById('t_d').addEventListener("click", function(){ 
 	socket.emit('tilt_down'); 
+});
+
+//MOVEMENT CONTROLS
+document.getElementById('m_f').addEventListener("mousedown", function(){ 
+	socket.emit('move_forward'); 
+});
+
+document.getElementById('m_f').addEventListener("mouseup", function(){ 
+	socket.emit('stop_movement'); 
+});
+
+document.getElementById('m_b').addEventListener("mousedown", function(){ 
+	socket.emit('move_backward'); 
+});
+
+document.getElementById('m_b').addEventListener("mouseup", function(){ 
+	socket.emit('stop_movement'); 
+});
+
+document.getElementById('m_l').addEventListener("mousedown", function(){ 
+	socket.emit('move_left'); 
+});
+
+document.getElementById('m_l').addEventListener("mouseup", function(){ 
+	socket.emit('stop_movement'); 
+});
+
+document.getElementById('m_r').addEventListener("mousedown", function(){ 
+	socket.emit('move_right'); 
+});
+
+document.getElementById('m_r').addEventListener("mouseup", function(){ 
+	socket.emit('stop_movement'); 
 });
 
 
