@@ -46,3 +46,6 @@ python3 app.py --remote_run
 
 ### Website ###
 <img src="https://user-images.githubusercontent.com/74781344/160654050-4fd0b75c-245e-496a-a963-13ec0cd1ab77.png">
+
+### Twirl. Stare. Twirl. ###
+<img src="https://user-images.githubusercontent.com/74781344/160661402-eac74334-6dc6-499f-868f-4b0ab633c828.gif">
