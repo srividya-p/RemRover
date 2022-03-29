@@ -41,8 +41,8 @@ Running the server with remote access -
 python3 app.py --remote_run
 ```
 ### Hardware Setup ### 
-<img align="right" src="https://user-images.githubusercontent.com/74781344/160652655-47335fb6-a509-4a79-9d82-70a13e9e2415.jpeg" width="400" height="400" style="border-radius:50%">
-<img src="https://user-images.githubusercontent.com/74781344/160652646-41234466-3584-40de-89f6-ba0ec68dc416.jpeg" width="500" height="400">
+<img align="right" src="https://user-images.githubusercontent.com/74781344/160652655-47335fb6-a509-4a79-9d82-70a13e9e2415.jpeg" width="300" height="300" style="border-radius:50%">
+<img src="https://user-images.githubusercontent.com/74781344/160652646-41234466-3584-40de-89f6-ba0ec68dc416.jpeg" width="400" height="300">
 
 ### Website ###
 <img src="https://user-images.githubusercontent.com/74781344/160654050-4fd0b75c-245e-496a-a963-13ec0cd1ab77.png">
